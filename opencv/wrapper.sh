@@ -56,4 +56,5 @@ emcmake cmake -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_DOCS=OFF -DBUILD_EXAMPLES=OFF \
  --memory-init-file 0 -s NO_FILESYSTEM=0 -DCMAKE_SHARED_LINKER_FLAGS_DEBUG=-O3 \
  --llvm-lto 1 -s ASSERTIONS=0 -s AGGRESSIVE_VARIABLE_ELIMINATION=0 \
  -s NO_DYNAMIC_EXECUTION=0 --memory-init-file 0 -s NO_FILESYSTEM=0 .. \
- -DCMAKE_TOOLCHAIN_FILE=/usr/share/emscripten/cmake/Modules/Platform/Emscripten.cmake
+ -DCMAKE_TOOLCHAIN_FILE=/usr/share/emscripten/cmake/Modules/Platform/Emscripten.cmake && \
+ emmake make -j$(($(nproc)-1>0?$(nproc)-1:1))
